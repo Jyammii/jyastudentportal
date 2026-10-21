@@ -1,0 +1,270 @@
+/* =============================================
+   PIXEL ART THEME — Jeya mae D. DACARA INF238
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap');
+
+:root {
+  --pixel-font: 'Press Start 2P', monospace;
+  --vt-font: 'VT323', monospace;
+
+  /* Color Palette */
+  --bg-dark:    #0d0f1a;
+  --bg-mid:     #141728;
+  --bg-panel:   #1a1f36;
+  --bg-card:    #1e2440;
+
+  --cyan:       #00e5ff;
+  --cyan-dim:   #00b8cc;
+  --teal:       #00ffc8;
+  --purple:     #a855f7;
+  --pink:       #f472b6;
+  --yellow:     #fbbf24;
+  --red:        #f87171;
+  --green:      #4ade80;
+
+  --border:     #2a3060;
+  --border-glow: rgba(0,229,255,0.45);
+  --text-main:  #cde0ff;
+  --text-dim:   #6b8ab8;
+  --text-bright:#ffffff;
+
+  /* Pixel border sizes */
+  --px: 4px;
+
+  font-family: var(--pixel-font);
+  font-size: 10px;
+  background: var(--bg-dark);
+  color: var(--text-main);
+  image-rendering: pixelated;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  background: var(--bg-dark);
+  background-image:
+    linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+  overflow-x: hidden;
+}
+
+/* Scanline overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(0,0,0,0.12) 3px,
+    rgba(0,0,0,0.12) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =====================
+   PIXEL BORDER UTILITY
+   ===================== */
+.pixel-box {
+  border: var(--px) solid var(--border);
+  box-shadow:
+    0 0 0 var(--px) var(--bg-dark),
+    0 0 0 calc(var(--px)*2) var(--border),
+    inset 0 0 0 var(--px) rgba(0,229,255,0.06);
+  position: relative;
+}
+
+.pixel-box-glow {
+  border: var(--px) solid var(--cyan-dim);
+  box-shadow:
+    0 0 0 var(--px) var(--bg-dark),
+    0 0 0 calc(var(--px)*2) var(--cyan-dim),
+    0 0 24px var(--border-glow),
+    inset 0 0 0 var(--px) rgba(0,229,255,0.1);
+}
+
+/* =====================
+   TYPOGRAPHY
+   ===================== */
+h1 { font-size: 1.4rem; letter-spacing: 2px; color: var(--cyan); line-height: 1.6; }
+h2 { font-size: 1rem; letter-spacing: 1px; color: var(--teal); line-height: 1.6; }
+h3 { font-size: 0.75rem; color: var(--text-main); line-height: 1.6; }
+p, span, label { font-family: var(--vt-font); font-size: 1.4rem; color: var(--text-main); }
+
+/* =====================
+   PIXEL BUTTON
+   ===================== */
+.btn-pixel {
+  font-family: var(--pixel-font);
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  padding: 10px 16px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.08s, filter 0.08s;
+  image-rendering: pixelated;
+  text-transform: uppercase;
+}
+
+.btn-pixel:active { transform: translate(2px, 2px); }
+
+.btn-cyan {
+  background: var(--cyan);
+  color: #000;
+  box-shadow: 4px 4px 0 #007a99, -2px -2px 0 rgba(255,255,255,0.3) inset;
+}
+.btn-cyan:hover { filter: brightness(1.15); }
+
+.btn-purple {
+  background: var(--purple);
+  color: #fff;
+  box-shadow: 4px 4px 0 #5b21b6, -2px -2px 0 rgba(255,255,255,0.2) inset;
+}
+.btn-purple:hover { filter: brightness(1.15); }
+
+.btn-red {
+  background: var(--red);
+  color: #000;
+  box-shadow: 4px 4px 0 #991b1b, -2px -2px 0 rgba(255,255,255,0.2) inset;
+}
+.btn-red:hover { filter: brightness(1.15); }
+
+.btn-green {
+  background: var(--green);
+  color: #000;
+  box-shadow: 4px 4px 0 #166534, -2px -2px 0 rgba(255,255,255,0.2) inset;
+}
+.btn-green:hover { filter: brightness(1.15); }
+
+.btn-yellow {
+  background: var(--yellow);
+  color: #000;
+  box-shadow: 4px 4px 0 #92400e, -2px -2px 0 rgba(255,255,255,0.2) inset;
+}
+.btn-yellow:hover { filter: brightness(1.15); }
+
+/* =====================
+   PIXEL INPUT
+   ===================== */
+.pixel-input {
+  font-family: var(--vt-font);
+  font-size: 1.3rem;
+  background: var(--bg-dark);
+  border: 3px solid var(--border);
+  color: var(--text-main);
+  padding: 10px 14px;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  letter-spacing: 1px;
+}
+.pixel-input:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 10px rgba(0,229,255,0.4);
+}
+.pixel-input::placeholder { color: var(--text-dim); font-family: var(--vt-font); }
+
+/* =====================
+   BLINK ANIMATION
+   ===================== */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.blink { animation: blink 1s step-start infinite; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.float { animation: float 3s ease-in-out infinite; }
+
+@keyframes scanIn {
+  from { clip-path: inset(0 0 100% 0); opacity: 0; }
+  to   { clip-path: inset(0 0 0% 0); opacity: 1; }
+}
+.scan-in { animation: scanIn 0.5s ease forwards; }
+
+@keyframes glitch {
+  0% { text-shadow: 2px 0 var(--cyan), -2px 0 var(--pink); }
+  25% { text-shadow: -2px 0 var(--cyan), 2px 0 var(--pink); }
+  50% { text-shadow: 2px 2px var(--teal), -2px -2px var(--purple); }
+  75% { text-shadow: -2px 0 var(--teal), 2px 0 var(--purple); }
+  100% { text-shadow: 2px 0 var(--cyan), -2px 0 var(--pink); }
+}
+.glitch { animation: glitch 3s infinite; }
+
+/* =====================
+   PIXEL TAG / BADGE
+   ===================== */
+.pixel-badge {
+  font-family: var(--pixel-font);
+  font-size: 0.5rem;
+  padding: 4px 8px;
+  letter-spacing: 1px;
+}
+.badge-admin { background: var(--purple); color: #fff; }
+.badge-student { background: var(--teal); color: #000; }
+
+/* =====================
+   TABLE
+   ===================== */
+.pixel-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--vt-font);
+  font-size: 1.2rem;
+}
+.pixel-table th {
+  font-family: var(--pixel-font);
+  font-size: 0.5rem;
+  padding: 10px 12px;
+  background: var(--bg-card);
+  color: var(--cyan);
+  border-bottom: 3px solid var(--cyan-dim);
+  text-align: left;
+  letter-spacing: 1px;
+}
+.pixel-table td {
+  padding: 10px 12px;
+  border-bottom: 2px solid var(--border);
+  color: var(--text-main);
+}
+.pixel-table tr:hover td { background: rgba(0,229,255,0.05); }
+
+/* =====================
+   SCROLLBAR
+   ===================== */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border: 2px solid var(--bg-dark);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--cyan-dim); }
+
+/* =====================
+   CORNER DECORATION
+   ===================== */
+.corner-tl, .corner-tr, .corner-bl, .corner-br {
+  position: absolute;
+  width: 12px; height: 12px;
+  background: var(--cyan);
+}
+.corner-tl { top: -4px; left: -4px; }
+.corner-tr { top: -4px; right: -4px; }
+.corner-bl { bottom: -4px; left: -4px; }
+.corner-br { bottom: -4px; right: -4px; }
